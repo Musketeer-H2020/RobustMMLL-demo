@@ -1,4 +1,4 @@
-RobustMMLL @ git+https://github.com/Musketeer-H2020/RobustMMLL.git
-pycloudmessenger @ https://github.com/IBM/pycloudmessenger/archive/v0.4.1.tar.gz
+git+https://github.com/Musketeer-H2020/RobustMMLL.git
+https://github.com/IBM/pycloudmessenger/archive/v0.4.1.tar.gz
 pandas==1.0.3
 seaborn==0.10.1
