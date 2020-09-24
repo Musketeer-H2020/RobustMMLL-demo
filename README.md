@@ -4,9 +4,11 @@ Demonstrations of the [Robust Musketeer Machine Learning Library (RobustMMLL)](h
 
 ## Linux installation
 
-Install graphviz-dev:
-`sudo apt-get update -y`
-`sudo apt-get install -y graphviz-dev`
+First, install graphviz-dev:
+```
+sudo apt-get update -y
+sudo apt-get install -y graphviz-dev
+```
 
 * Installation creating a virtual environment:
 ```
@@ -15,9 +17,11 @@ source venv/bin/activate
 ```
 
 * Installation without virtual environment:
+
 `pip install -r requirements.txt`
 
   * Or if you only require pycloudmessenger, then:
+
 `pip install https://github.com/IBM/pycloudmessenger/archive/v0.4.1.tar.gz`
 
 The pycloudmessenger package requires a credentials file to access the cloud service. Please, place the `musketeer.json` credentials at the `demos/demo_pycloudmessenger/`folder.
