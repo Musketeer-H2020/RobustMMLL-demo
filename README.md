@@ -2,15 +2,23 @@
 
 Demonstrations of the [Robust Musketeer Machine Learning Library (RobustMMLL)](https://github.com/Musketeer-H2020/RobustMMLL) using [Musketeer's pycloudmessenger](https://github.com/IBM/pycloudmessenger/)
 
-## Installation
+## Linux installation
 
-You may install pycloudmessenger and other library dependencies as follows:
+Install graphviz-dev:
+`sudo apt-get update -y`
+`sudo apt-get install -y graphviz-dev`
 
+* Installation creating a virtual environment:
+```
+./create_env.sh`
+source venv/bin/activate
+```
+
+* Installation without virtual environment:
 `pip install -r requirements.txt`
 
-Or if you only require pycloudmessenger, then:
-
-`pip install  https://github.com/IBM/pycloudmessenger/archive/v0.4.0.tar.gz`
+  * Or if you only require pycloudmessenger, then:
+`pip install https://github.com/IBM/pycloudmessenger/archive/v0.4.1.tar.gz`
 
 The pycloudmessenger package requires a credentials file to access the cloud service. Please, place the `musketeer.json` credentials at the `demos/demo_pycloudmessenger/`folder.
 
@@ -25,15 +33,7 @@ The output files are stored in the corresponding `results/` folder.
 
 ## Usage
 
-You need to install the [RobustMMLL library](https://github.com/Musketeer-H2020/RobustMMLL):
-
-`pip install git+https://github.com/Musketeer-H2020/RobustMMLL.git`
-
 Please visit every subfolder in `demo/demo_pycloudmessenger/` for a detailed explanation about how to run the demos.
-
-If you encounter any difficulties in the installation of some of the dependencies, please refer to the `install` instructions in this repository.
-
-* Requirements Note: if you do not use conda to install and use pip instead, you may need to run `pip install requirements.txt` 
 
 ## Input data
 
