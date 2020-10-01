@@ -4,13 +4,7 @@ Demonstrations of the [Robust Musketeer Machine Learning Library (RobustMMLL)](h
 
 ## Linux installation
 
-First, install graphviz-dev:
-```
-sudo apt-get update -y
-sudo apt-get install -y graphviz-dev
-```
-
-Afterwards, use one of the following options:
+Use one of the following options:
 
 ### Installation creating a virtual environment:
 ```

@@ -7,13 +7,7 @@
 - Once Anaconda is correctly installed, open a bash/dash terminal and execute the following commands:
 
 conda update conda
-
 conda update anaconda
-
-- First, make sure that you have installed graphviz-dev, otherwise run the following commands:
-
-sudo apt-get update -y
-sudo apt-get install -y graphviz-dev
 
 - Next, from the root directory of the repo, we create a conda environment:
 
