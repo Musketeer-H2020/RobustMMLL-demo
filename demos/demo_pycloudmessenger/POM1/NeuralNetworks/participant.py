@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 '''
 @author:  Marcos Fernandez Diaz
-May 2020
+September 2020
 
-Example of use: python pom1_NN_worker_pycloudmessenger.py --user <user> --password <password> --task_name <task_name> --id <id>
+Example of use: python participant.py --user <user> --password <password> --task_name <task_name> --id <id>
 
 Parameters:
     - user: String with the name of the user. If the user does not exist in the pycloudmessenger platform a new one will be created

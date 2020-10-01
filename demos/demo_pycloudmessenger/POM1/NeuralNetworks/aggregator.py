@@ -3,7 +3,7 @@
 @author:  Marcos Fernandez Diaz
 September 2020
 
-Example of use: python pom1_NN_robust_model_averaging_master_pycloudmessenger.py --user <user> --password <password> --task_name <task_name>
+Example of use: python aggregator.py --user <user> --password <password> --task_name <task_name>
 
 Parameters:
     - user: String with the name of the user. If the user does not exist in the pycloudmessenger platform a new one will be created

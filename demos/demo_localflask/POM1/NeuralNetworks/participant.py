@@ -3,7 +3,7 @@
 @author:  Marcos Fernandez Diaz
 May 2020
 
-Example of use: python pom1_NN_worker_local_flask.py --id 0
+Example of use: python participant.py --id 0
 
 Parameters:
     - id: Integer representing the partition of data to be used by the worker. Each worker should use a different partition, possible values are 0 to 4.

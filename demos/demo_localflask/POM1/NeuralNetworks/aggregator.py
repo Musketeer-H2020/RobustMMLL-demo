@@ -3,7 +3,7 @@
 @author:  Marcos Fernandez Diaz
 September 2020
 
-Example of use: python pom1_NN_model_averaging_master_local_flask.py 
+Example of use: python aggregator.py 
 
 '''
 
