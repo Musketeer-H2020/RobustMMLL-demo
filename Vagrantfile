@@ -15,7 +15,6 @@ apt-get update
 apt-get upgrade
 
 apt-get install -y ca-certificates curl coreutils jq zip python3 python3-pip
-apt-get install -y graphviz-dev
 
 SCRIPT_ROOT
 
