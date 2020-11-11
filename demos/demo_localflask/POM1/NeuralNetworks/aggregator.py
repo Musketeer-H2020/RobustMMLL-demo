@@ -46,7 +46,7 @@ if __name__ == "__main__":
     model_type = 'NN'
     
     # The master must know the workers ids
-    workers_ids = ['0', '1']
+    workers_ids = ['0', '1', '2', '3', '4']
     Nworkers = len(workers_ids)
     master_address = 'ma'
 
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     display('-------------------- Loading dataset %s --------------------------' %dataset_name, logger, verbose)
     # Warning: this data connector is only designed for the demos. In Musketeer, appropriate data
     # connectors must be provided
-    data_file = '../../../../input_data/' + dataset_name + '_demonstrator_data.pkl'
+    data_file = '../../../../input_data/' + dataset_name + '_hackathon_data.pkl'
     try:
         dc = DC(data_file)
     except:
