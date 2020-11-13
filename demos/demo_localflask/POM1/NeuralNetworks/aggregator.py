@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
     # Load the model architecture as defined by Keras model.to_json()
     try:
-        with open('./keras_model_MLP.json', 'r') as json_file:
+        with open('./keras_model_CNN_2.json', 'r') as json_file:
             model_architecture = json_file.read()
     except:
         display('Error - The file keras_model_MLP.json defining the neural network architecture is not available, please put it under the following path: "' + os.path.abspath(os.path.join("","./")) + '"', logger, verbose)
@@ -75,13 +75,13 @@ if __name__ == "__main__":
    
     # Task definition
     model_parameters = {}
-    Nmaxiter = 5
+    Nmaxiter = 20
     learning_rate = 0.0003
     optimizer = 'adam'
     loss = 'categorical_crossentropy'
     metric = 'accuracy'
     batch_size = 64
-    num_epochs = 2
+    num_epochs = 1
     model_averaging = 'True'
     model_parameters.update({'Nmaxiter': Nmaxiter, 'learning_rate': learning_rate, 'model_architecture': model_architecture,
                              'optimizer': optimizer, 'loss': loss, 'metric': metric, 'batch_size': batch_size, 'num_epochs': num_epochs, 
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     display('-------------------- Loading dataset %s --------------------------' %dataset_name, logger, verbose)
     # Warning: this data connector is only designed for the demos. In Musketeer, appropriate data
     # connectors must be provided
-    data_file = '../../../../input_data/' + dataset_name + '_hackathon_data.pkl'
+    data_file = '../../../../input_data/' + dataset_name + '_demonstrator_data.pkl'
     try:
         dc = DC(data_file)
     except:
@@ -105,6 +105,8 @@ if __name__ == "__main__":
         sys.exit()
 
     [Xval, yval] = dc.get_data_val()
+    # Xval = [Xval_.reshape((28, 28, 1)).tolist() for Xval_ in Xval]
+    # print(len(Xval),len(Xval[0]))
     mn.set_validation_data(dataset_name, Xval, yval)
     display('MasterNode loaded %d patterns for validation' % mn.NPval, logger, verbose)
 

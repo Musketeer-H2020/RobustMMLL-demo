@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
     # Warning: this data connector is only designed for the demos. In Musketeer, appropriate data
     # connectors must be provided
-    data_file = '../../../../input_data/' + dataset_name + '_hackathon_data.pkl'
+    data_file = '../../../../input_data/' + dataset_name + '_demonstrator_data.pkl'
     try:
         dc = DC(data_file)
     except:
@@ -99,6 +99,10 @@ if __name__ == "__main__":
         sys.exit()
 
     [Xtr, ytr, _, _, Xtst, ytst] = dc.get_all_data_Worker(int(worker_address))
+
+    # Xtr = [Xtr_.reshape((28, 28, 1)).tolist() for Xtr_ in Xtr]
+    # Xtst = [Xtst_.reshape((28, 28, 1)).tolist() for Xtst_ in Xtst]
+
     wn.set_training_data(dataset_name, Xtr, ytr)
     display('WorkerNode loaded %d patterns for training' % wn.NPtr, logger, verbose)
 
