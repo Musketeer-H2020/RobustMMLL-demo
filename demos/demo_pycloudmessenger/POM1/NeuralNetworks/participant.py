@@ -48,9 +48,10 @@ LOGGER.setLevel(logging.DEBUG)
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     #parser.add_argument('--credentials', type=str, default=None, help='Credentials for Muskeeter Server')
-    parser.add_argument('--user', type=str, default=None, help='User')
-    parser.add_argument('--password', type=str, default=None, help='Password')
-    parser.add_argument('--task_name', type=str, default=None, help='Name of the task')
+    parser.add_argument('--user', type=str, required=True, help='User')
+    parser.add_argument('--password', type=str, required=True, help='Password')
+    parser.add_argument('--task_name', type=str, required=True, help='Name of the task')
+    parser.add_argument('--credentials', type=str, required=True, help='Path to credentials file')
     #parser.add_argument('--dataset', type=str, default=None, help='The file with the data')
     #parser.add_argument('--verbose', type=str, default=False, help='If true print the messages on the console')
     parser.add_argument('--id', type=int, default=None, help='The address of the worker')
@@ -87,12 +88,12 @@ if __name__ == "__main__":
     # Note: this part creates the worker (participant) and it joins the task. This code is
     # intended to be used only at the demos, in Musketeer this part must be done in the client. 
     # ==================================================
-    credentials_filename = '../../musketeer.json'
+    credentials_filename = os.path.abspath(os.path.expanduser(os.path.expandvars(FLAGS.credentials)))
     try:
         with open(credentials_filename, 'r') as f:
             credentials = json.load(f)
     except:
-        display('Error - The file musketeer.json is not available, please put it under the following path: "' + os.path.abspath(os.path.join("","../../")) + '"', logger, verbose)
+        display('Error - The credentials file is not available, please put it under the following path: "' + os.path.abspath(os.path.join("","../../")) + '"', logger, verbose)
         sys.exit()
 
     tm = Task_Manager(credentials_filename)

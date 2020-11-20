@@ -19,6 +19,7 @@ import json
 import time
 import numpy as np
 import sys, os
+import robust
 
 # Add higher directory to python modules path.
 sys.path.append("../../../../")
@@ -29,15 +30,15 @@ from RobustMMLL.nodes.MasterNode import MasterNode
 from RobustMMLL.comms.comms_pycloudmessenger import Comms_master as Comms
 
 # To be imported from robust
-try:
-    from RobustMMLL.robust.robust import Robust_Master
-except Exception as err:
-    if "No module named 'MMLL.robust'" in str(err):
-        print('\n' + 80 * '#')
-        print('You need to install the robust MMLL library')
-        print('pip install git+https://github.com/Musketeer-H2020/RobustMMLL.git')
-        print(80 * '#' + '\n')
-    raise
+#try:
+#    from RobustMMLL.robust.robust import Robust_Master
+#except Exception as err:
+#    if "No module named 'MMLL.robust'" in str(err):
+#        print('\n' + 80 * '#')
+#        print('You need to install the robust MMLL library')
+#        print('pip install git+https://github.com/Musketeer-H2020/RobustMMLL.git')
+#        print(80 * '#' + '\n')
+#    raise
 
 # To be imported from demo_tools 
 from demo_tools.task_manager_pycloudmessenger import Task_Manager
@@ -60,9 +61,12 @@ LOGGER.setLevel(logging.DEBUG)
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     #parser.add_argument('--credentials', type=str, default=None, help='Credentials for Muskeeter Server')
-    parser.add_argument('--user', type=str, default=None, help='User')
-    parser.add_argument('--password', type=str, default=None, help='Password')
-    parser.add_argument('--task_name', type=str, default=None, help='Name of the task')
+    parser.add_argument('--user', type=str, required=True, help='User')
+    parser.add_argument('--password', type=str, required=True, help='Password')
+    parser.add_argument('--task_name', type=str, required=True, help='Name of the task')
+    parser.add_argument('--credentials', type=str, required=True, help='Path to credentials file')
+    parser.add_argument('--iterations', type=int, required=False, default=5, help='Number of iterations')
+    parser.add_argument('--workers', type=int, required=False, default=2, help='Number of workers')
     #parser.add_argument('--dataset', type=str, default=None, help='The file with the data')
     #parser.add_argument('--verbose', type=str, default=False, help='If true print the messages on the console')
 
@@ -76,7 +80,7 @@ if __name__ == "__main__":
     comms_type = 'pycloudmessenger'
     pom = 1
     model_type = 'NN'
-    Nworkers = 2
+    Nworkers = FLAGS.workers
 
 
     # Create the directories for storing relevant outputs if they do not exist
@@ -104,7 +108,7 @@ if __name__ == "__main__":
     task_definition = {"quorum": Nworkers, 
                        "POM": pom, 
                        "model_type": model_type, 
-                       "Nmaxiter": 5, 
+                       "Nmaxiter": FLAGS.iterations,
                        "learning_rate": 0.0003,
                        "model_architecture": model_architecture,
                        "optimizer": 'adam',
@@ -122,12 +126,12 @@ if __name__ == "__main__":
     # ==================================================
     # Note: this part creates the task and waits for the workers to join. This code is
     # intended to be used only at the demos, in Musketeer this part must be done in the client. 
-    credentials_filename = '../../musketeer.json'
+    credentials_filename = os.path.abspath(os.path.expanduser(os.path.expandvars(FLAGS.credentials)))
     try:
         with open(credentials_filename, 'r') as f:
             credentials = json.load(f)
     except:
-        display('Error - The file musketeer.json is not available, please put it under the following path: "' + os.path.abspath(os.path.join("","../../")) + '"', logger, verbose)
+        display('Error - The credentials file is not available, please put it under the following path: "' + os.path.abspath(os.path.join("","../../")) + '"', logger, verbose)
         sys.exit()
 
     tm = Task_Manager(credentials_filename)
@@ -146,7 +150,7 @@ if __name__ == "__main__":
     method = 'average'
     display('Creating robust object. Aggregation method: %s' %method, logger, verbose)
     try:
-        robust = Robust_Master(method=method)
+        robust = robust.Robust_Master(method=method)
     except Exception as err:
         display('Error when creating robust object', logger, verbose)
         raise
