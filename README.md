@@ -18,10 +18,10 @@ source venv/bin/activate
 
 Or if you only require pycloudmessenger, then:
 
-`pip install https://github.com/IBM/pycloudmessenger/archive/v0.4.1.tar.gz`
+`pip install https://github.com/IBM/pycloudmessenger/archive/v0.6.0.tar.gz`
 
 
-**IMPORTANT NOTE**: The pycloudmessenger package requires a credentials file to access the cloud service. Please, place the `musketeer.json` credentials at the `demos/demo_pycloudmessenger/`folder.
+**IMPORTANT NOTE**: The pycloudmessenger package requires a credentials file to access the cloud service. Please, place the `hackathon.json` credentials at the `demos/demo_pycloudmessenger/`folder.
 
 ## Content (available demos):
 
@@ -29,18 +29,14 @@ Or if you only require pycloudmessenger, then:
 
 * **NeuralNetworks**: Multiclass Classification demo on the MNIST dataset
 
-
 The output files are stored in the corresponding `results/` folder.
 
 ## Usage
 
 Please visit every subfolder in `demo/demo_pycloudmessenger/` for a detailed explanation about how to run the demos.
 
-## Input data
+## Adding robust aggregtion schemes
 
-The datasets needed to run these demos are located at [IBM Box](https://ibm.box.com/s/l8yzdbdb40j499o513hygx5q85xyoz6v). Please, download and place them in your local `input_data/` folder. 
-
-**IMPORTANT NOTE**: These datasets have been modified with respect to their original versions and are only intended to be used in these demos. Use them for other purposes under your own responsability.
-
+The code stubs for robust aggregation can be added [here](https://github.com/Musketeer-H2020/RobustMMLL-demo/blob/main/demos/demo_pycloudmessenger/POM1/NeuralNetworks/robust.py) with a new string-tag depicting the method. This method can then be called while executing the `aggregator.py` script.
 
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824988. https://musketeer.eu/
