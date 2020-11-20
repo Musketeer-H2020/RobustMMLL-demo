@@ -29,17 +29,6 @@ os.environ['KMP_WARNINGS'] = 'off' # Remove KMP_AFFINITY logs
 from RobustMMLL.nodes.MasterNode import MasterNode
 from RobustMMLL.comms.comms_pycloudmessenger import Comms_master as Comms
 
-# To be imported from robust
-#try:
-#    from RobustMMLL.robust.robust import Robust_Master
-#except Exception as err:
-#    if "No module named 'MMLL.robust'" in str(err):
-#        print('\n' + 80 * '#')
-#        print('You need to install the robust MMLL library')
-#        print('pip install git+https://github.com/Musketeer-H2020/RobustMMLL.git')
-#        print(80 * '#' + '\n')
-#    raise
-
 # To be imported from demo_tools 
 from demo_tools.task_manager_pycloudmessenger import Task_Manager
 from demo_tools.data_connectors.Load_from_file import Load_From_File as DC                          # Data connector
@@ -60,15 +49,12 @@ LOGGER.setLevel(logging.DEBUG)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    #parser.add_argument('--credentials', type=str, default=None, help='Credentials for Muskeeter Server')
     parser.add_argument('--user', type=str, required=True, help='User')
     parser.add_argument('--password', type=str, required=True, help='Password')
     parser.add_argument('--task_name', type=str, required=True, help='Name of the task')
     parser.add_argument('--credentials', type=str, required=True, help='Path to credentials file')
     parser.add_argument('--iterations', type=int, required=False, default=5, help='Number of iterations')
     parser.add_argument('--workers', type=int, required=False, default=2, help='Number of workers')
-    #parser.add_argument('--dataset', type=str, default=None, help='The file with the data')
-    #parser.add_argument('--verbose', type=str, default=False, help='If true print the messages on the console')
 
     FLAGS, unparsed = parser.parse_known_args()
     user_name = FLAGS.user
