@@ -146,7 +146,7 @@ if __name__ == "__main__":
     display('-------------------- Loading dataset %s --------------------------' %dataset_name, logger, verbose)
     # Warning: this data connector is only designed for the demos. In Musketeer, appropriate data
     # connectors must be provided
-    data_file = '../../../../input_data/' + dataset_name + '_demonstrator_data.pkl'
+    data_file = '../../../../input_data/' + dataset_name + '_hackathon_data.pkl'
     try:
         dc = DC(data_file)
     except:
