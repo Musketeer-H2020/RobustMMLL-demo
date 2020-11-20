@@ -28,6 +28,6 @@ Important notes:
 ==================================================================
  Robust aggregation with model averaging without normalization
 ==================================================================
-python aggregator.py --user <user> --password <password> --task_name <task_name> --credentials <filename> --iterations 5 --workers 2
+python aggregator.py --user <user> --password <password> --task_name <task_name> --credentials <filename> --iterations 5 --workers 2 --robustmethod average
 python participant.py --user <user> --password <password> --task_name <task_name> --id 0 --credentials <filename>
 python participant.py --user <user> --password <password> --task_name <task_name> --id 1 --credentials <filename>
