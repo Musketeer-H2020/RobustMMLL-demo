@@ -55,7 +55,8 @@ if __name__ == "__main__":
     parser.add_argument('--credentials', type=str, required=True, help='Path to credentials file')
     parser.add_argument('--iterations', type=int, required=False, default=5, help='Number of iterations')
     parser.add_argument('--workers', type=int, required=False, default=2, help='Number of workers')
-
+    parser.add_argument('--robustmethod', type=str, required=True, default='average', help='robustness scheme for aggregation')
+    
     FLAGS, unparsed = parser.parse_known_args()
     user_name = FLAGS.user
     user_password = FLAGS.password
@@ -133,7 +134,7 @@ if __name__ == "__main__":
     comms = Comms(aggregator)
 
     # Creating the robust object
-    method = 'average'
+    method = FLAGS.robustmethod
     display('Creating robust object. Aggregation method: %s' %method, logger, verbose)
     try:
         robust = robust.Robust_Master(method=method)
