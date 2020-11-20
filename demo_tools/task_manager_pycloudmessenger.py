@@ -38,6 +38,14 @@ class Task_Manager:
             print('\n' + '#' * 80 + '\nERROR - The file musketeer.json is not available, please put it under the following path: "' + os.path.abspath(os.path.join("","../../")) + '"\n' + '#' * 80 + '\n')
             sys.exit()
 
+    def stop_task(self, model: dict = None):
+        try:
+            with self.aggregator:
+                self.aggregator.stop_task(model)
+        except Exception as err:
+            print(err)
+            raise
+
     def create_master_and_taskname(self, display, logger, task_definition, user_name, user_password='Tester', task_name='Test', user_org='TREE', verbose=False):
         self.task_name = task_name
         self.Nworkers = task_definition['quorum']

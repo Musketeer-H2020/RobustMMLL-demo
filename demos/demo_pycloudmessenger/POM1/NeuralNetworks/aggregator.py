@@ -55,7 +55,7 @@ if __name__ == "__main__":
     parser.add_argument('--credentials', type=str, required=True, help='Path to credentials file')
     parser.add_argument('--iterations', type=int, required=False, default=5, help='Number of iterations')
     parser.add_argument('--workers', type=int, required=False, default=2, help='Number of workers')
-    parser.add_argument('--robustmethod', type=str, required=True, default='average', help='robustness scheme for aggregation')
+    parser.add_argument('--robustmethod', type=str, required=False, default='average', help='robustness scheme for aggregation')
     
     FLAGS, unparsed = parser.parse_known_args()
     user_name = FLAGS.user
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     try:
         dc = DC(data_file)
     except:
-        display('Error - The file ' + dataset_name + '_demonstrator_data.pkl does not exist. Please download it from Box and put it under the following path: "' + os.path.abspath(os.path.join("","../../../../input_data/")) + '"', logger, verbose)
+        display('Error - The file ' + dataset_name + '_hackathon_data.pkl does not exist. Please download it from Box and put it under the following path: "' + os.path.abspath(os.path.join("","../../../../input_data/")) + '"', logger, verbose)
         sys.exit()
 
   
@@ -201,6 +201,7 @@ if __name__ == "__main__":
 
     display('Terminating all worker nodes.', logger, verbose)
     mn.terminate_Workers()
+    tm.stop_task()
 
     display('----------------------------------------------------------------------', logger, verbose)
     display('------------------------- END MMLL Procedure -------------------------', logger, verbose)
