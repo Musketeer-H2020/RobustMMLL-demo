@@ -50,14 +50,8 @@ class Robust_Master:
                 mean_weights = np.mean(layer_weights, axis=0) # Average layer weights for all workers
                 new_weights.append(mean_weights)
 
-        elif self.method == 'median':
-            new_weights = []
-            for index_layer in range(len(list_weights[0])):
-                layer_weights = []
-                for worker in range(len(list_weights)):
-                    layer_weights.append(list_weights[worker][index_layer])                 
-                mean_weights = np.median(layer_weights, axis=0) # Calculate the median of layer weights for all workers
-                new_weights.append(mean_weights)
+        else:
+            raise NotImplementedError
 
         return new_weights
         
