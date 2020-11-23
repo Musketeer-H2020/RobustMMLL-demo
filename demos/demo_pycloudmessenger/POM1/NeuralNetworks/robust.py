@@ -55,36 +55,3 @@ class Robust_Master:
 
         return new_weights
         
-
-
-
-class Robust_Worker:
-    """
-    This class implements robust training methods for different algorithms, runs at Worker node.
-    """
-    def __init__(self):
-        """
-        Create a class `Robust_Worker` instance.
-
-        Parameters
-        ----------
-        """
-
-
-    def generate_samples(self):
-        """
-        Method for generating samples at worker in order to cope with adversarial attachs at test time.
-
-        Parameters
-        ----------
-        """
-
-
-    def prefilter_outliers(self):
-        """
-        Method for prefiltering outliers at worker.
-
-        Parameters
-        ----------
-        """
-        
