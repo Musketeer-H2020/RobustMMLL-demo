@@ -65,5 +65,8 @@ The code stubs for robust aggregation can be added [here](https://github.com/Mus
 - The script fails to locate the hackathon.json file. 
 
     A: Please provide the relative path to the json file rather then just the name itself.
+- One of the participants is unable to join the task. What should I do?
+
+    A: With a single account, one can run an aggregator and one participant, so make sure that the additional participants have different userids.
 
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 824988. https://musketeer.eu/
